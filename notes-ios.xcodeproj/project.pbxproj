@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		954555542AE45774001558BF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954555532AE45774001558BF /* NoteView.swift */; };
+		954555562AE45D51001558BF /* NoteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954555552AE45D51001558BF /* NoteRow.swift */; };
+		954555582AE45D88001558BF /* NotesFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954555572AE45D88001558BF /* NotesFooter.swift */; };
+		9545555D2AE45DF8001558BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555C2AE45DF8001558BF /* Note.swift */; };
+		9545555F2AE45E71001558BF /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555E2AE45E71001558BF /* NoteList.swift */; };
 		95BA48E62AE3D5B000552282 /* notes_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E52AE3D5B000552282 /* notes_iosApp.swift */; };
 		95BA48E82AE3D5B000552282 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E72AE3D5B000552282 /* ContentView.swift */; };
 		95BA48EA2AE3D5B100552282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BA48E92AE3D5B100552282 /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		954555532AE45774001558BF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		954555552AE45D51001558BF /* NoteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRow.swift; sourceTree = "<group>"; };
+		954555572AE45D88001558BF /* NotesFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFooter.swift; sourceTree = "<group>"; };
+		9545555C2AE45DF8001558BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		9545555E2AE45E71001558BF /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		95BA48E22AE3D5B000552282 /* notes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "notes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BA48E52AE3D5B000552282 /* notes_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notes_iosApp.swift; sourceTree = "<group>"; };
 		95BA48E72AE3D5B000552282 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		954555592AE45DC8001558BF /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				9545555C2AE45DF8001558BF /* Note.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
 		95BA48D92AE3D5B000552282 = {
 			isa = PBXGroup;
 			children = (
@@ -51,10 +69,15 @@
 		95BA48E42AE3D5B000552282 /* notes-ios */ = {
 			isa = PBXGroup;
 			children = (
+				954555592AE45DC8001558BF /* domain */,
 				95BA48E52AE3D5B000552282 /* notes_iosApp.swift */,
 				95BA48E72AE3D5B000552282 /* ContentView.swift */,
 				95BA48E92AE3D5B100552282 /* Assets.xcassets */,
 				95BA48EB2AE3D5B100552282 /* Preview Content */,
+				954555532AE45774001558BF /* NoteView.swift */,
+				954555572AE45D88001558BF /* NotesFooter.swift */,
+				9545555E2AE45E71001558BF /* NoteList.swift */,
+				954555552AE45D51001558BF /* NoteRow.swift */,
 			);
 			path = "notes-ios";
 			sourceTree = "<group>";
@@ -139,6 +162,11 @@
 			files = (
 				95BA48E82AE3D5B000552282 /* ContentView.swift in Sources */,
 				95BA48E62AE3D5B000552282 /* notes_iosApp.swift in Sources */,
+				954555582AE45D88001558BF /* NotesFooter.swift in Sources */,
+				954555542AE45774001558BF /* NoteView.swift in Sources */,
+				9545555F2AE45E71001558BF /* NoteList.swift in Sources */,
+				954555562AE45D51001558BF /* NoteRow.swift in Sources */,
+				9545555D2AE45DF8001558BF /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
