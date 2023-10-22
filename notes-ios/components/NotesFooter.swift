@@ -16,7 +16,11 @@ struct NotesFooter: View {
 
     var body: some View {
         HStack {
-            Text(String(viewModel.notes.count) + " Notes")
+            if viewModel.notes.count == 1 {
+                Text(String(viewModel.notes.count) + " Note")
+            } else {
+                Text(String(viewModel.notes.count) + " Notes")
+            }
             Spacer()
             NavigationLink {
                 CreateNoteView(viewModel: viewModel)
