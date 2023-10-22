@@ -34,5 +34,5 @@ struct NoteList: View {
 }
 
 #Preview {
-    ContentView()
+    NotesView()
 }

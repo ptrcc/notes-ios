@@ -35,5 +35,5 @@ struct EditableList<Element: Identifiable, Content: View>: View {
 
 
 #Preview {
-        ContentView()
+        NotesView()
 }

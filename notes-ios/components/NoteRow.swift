@@ -20,5 +20,5 @@ struct NoteRow: View {
 
 
 #Preview {
-    ContentView()
+    NotesView()
 }

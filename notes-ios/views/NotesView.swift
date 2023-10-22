@@ -16,7 +16,7 @@ var menu: some View {
     }.padding()
 }
 
-struct ContentView: View {
+struct NotesView: View {
     @State var notes = [
         Note(id: UUID(), title:"title1", text:"this is an example text"),
         Note(id: UUID(), title:"title2", text:"this is an example text"),
@@ -34,5 +34,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    NotesView()
 }
