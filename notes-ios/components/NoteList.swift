@@ -7,32 +7,49 @@
 
 import SwiftUI
 
+var menu: some View {
+    Menu {
+        Text("Language")
+    } label: {
+        Label("Menu", systemImage: "ellipsis.circle")
+    }.padding()
+}
+
 struct NoteList: View {
 
-    @State var notes: [Note]
+    @ObservedObject var viewModel: ViewModel
+    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        NavigationStack {
-            EditableList($notes) { $item in
-                NavigationLink {
-                    NoteView()
-                } label: {
-                    NoteRow(note: item)
-                        .swipeActions(allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                print("Deleting note")
-                            } label: {
-                                Label("Delete", systemImage: "trash.fill")
-                            }
+        List($viewModel.notes) { $item in
+            NavigationLink {
+                NoteView(note: $item)
+            } label: {
+                NoteRow(note: item)
+                    .swipeActions(allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            viewModel.removeNote(note: item)
+                            print("Remove Note")
+                        } label: {
+                            Label("Delete", systemImage: "trash.fill")
                         }
-                }
-           }
-            .navigationTitle("Notes")
-            .navigationBarItems(trailing: menu)
+                    }
+            }
         }
+        .navigationTitle("All Notes")
+        .navigationBarItems(trailing: menu)
     }
 }
 
 #Preview {
-    NotesView()
+    NotesView(
+        viewModel: ViewModel(
+            service: NotesServiceImpl(
+                repository: NotesRepositoryImpl()
+            )
+        )
+    )
 }

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct EditableList<Element: Identifiable, Content: View>: View {
-    
+
     @Binding var data: [Element]
     var content: (Binding<Element>) -> Content
-
+    
     init(_ data: Binding<[Element]>,
-         content: @escaping (Binding<Element>) -> Content) {
+         content: @escaping (Binding<Element>) -> Content
+         
+    ) {
         self._data = data
         self.content = content
     }
@@ -26,14 +28,23 @@ struct EditableList<Element: Identifiable, Content: View>: View {
                 }
                 .onDelete { indexSet in
                     data.remove(atOffsets: indexSet)
+            
                 }
         }
-        .toolbar { EditButton() }
+        .toolbar {
+            EditButton()
+        }
     }
 }
 
 
 
 #Preview {
-        NotesView()
+    NotesView(
+        viewModel: ViewModel(
+            service: NotesServiceImpl(
+                repository: NotesRepositoryImpl()
+            )
+        )
+    )
 }

@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct notes_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            NotesView()
+            NotesView(viewModel: ViewModel(
+                service: NotesServiceImpl(
+                    repository: NotesRepositoryImpl()
+                )
+                )
+            )
         }
     }
 }

@@ -6,21 +6,25 @@
 //
 import SwiftUI
 
-struct NoteView: View {
-    var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Text("Note Title")
-                    .font(.title)
-                Divider()
-                Text("This is a note content.")
-            }
-            .padding()
-            Spacer()
-        }
-    }
+var noteMenu: some View {
+    ShareLink(item: URL(string: "https://developer.apple.com/xcode/swiftui/")!)
 }
 
-#Preview {
-    NoteView()
+struct NoteView: View {
+    @Binding var note: Note
+    
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading) {
+                TextField("Title", text: $note.title)
+                    .font(.title).bold()
+                Divider()
+                TextEditor(text: $note.text)
+                Spacer()
+            }
+            .padding()
+            .padding(.top, 0)
+            .navigationBarItems(trailing: noteMenu)
+        }
+    }
 }

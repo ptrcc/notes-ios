@@ -8,17 +8,36 @@
 import SwiftUI
 
 struct NotesFooter: View {
-    var sizeOfNotes: Int
+    @ObservedObject var viewModel: ViewModel
     
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         HStack {
-            // TODO center text
-            Text(String(sizeOfNotes) + " Notes")
-                .font(.caption)
+            Text(String(viewModel.notes.count) + " Notes")
             Spacer()
-            Button("", systemImage: "square.and.pencil") {
-                // TODO Action
-            }.accessibilityHint("Add Note")
-        }.padding([.leading, .trailing], 20)
+            NavigationLink {
+                CreateNoteView(viewModel: viewModel)
+            } label: {
+                Image(systemName: "square.and.pencil")
+                    .accessibilityHint("Add Note")
+            }
+        }
+        .padding()
+        .padding([.top, .bottom], 0)
     }
 }
+
+
+#Preview {
+    NotesView(
+        viewModel: ViewModel(
+            service: NotesServiceImpl(
+                repository: NotesRepositoryImpl()
+            )
+        )
+    )
+}
+
