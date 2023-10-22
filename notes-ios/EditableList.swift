@@ -7,12 +7,33 @@
 
 import SwiftUI
 
-struct EditableList: View {
+struct EditableList<Element: Identifiable, Content: View>: View {
+    
+    @Binding var data: [Element]
+    var content: (Binding<Element>) -> Content
+
+    init(_ data: Binding<[Element]>,
+         content: @escaping (Binding<Element>) -> Content) {
+        self._data = data
+        self.content = content
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach($data, content: content)
+                .onMove { indexSet, offset in
+                    data.move(fromOffsets: indexSet, toOffset: offset)
+                }
+                .onDelete { indexSet in
+                    data.remove(atOffsets: indexSet)
+                }
+        }
+        .toolbar { EditButton() }
     }
 }
 
+
+
 #Preview {
-    EditableList()
+        ContentView()
 }

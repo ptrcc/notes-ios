@@ -16,6 +16,7 @@
 		95BA48E82AE3D5B000552282 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E72AE3D5B000552282 /* ContentView.swift */; };
 		95BA48EA2AE3D5B100552282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BA48E92AE3D5B100552282 /* Assets.xcassets */; };
 		95BA48ED2AE3D5B100552282 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BA48EC2AE3D5B100552282 /* Preview Assets.xcassets */; };
+		95E42A912AE51A20000448CD /* EditableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E42A902AE51A20000448CD /* EditableList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		95BA48E72AE3D5B000552282 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		95BA48E92AE3D5B100552282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95BA48EC2AE3D5B100552282 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		95E42A902AE51A20000448CD /* EditableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				954555572AE45D88001558BF /* NotesFooter.swift */,
 				9545555E2AE45E71001558BF /* NoteList.swift */,
 				954555552AE45D51001558BF /* NoteRow.swift */,
+				95E42A902AE51A20000448CD /* EditableList.swift */,
 			);
 			path = "notes-ios";
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				95BA48E82AE3D5B000552282 /* ContentView.swift in Sources */,
 				95BA48E62AE3D5B000552282 /* notes_iosApp.swift in Sources */,
 				954555582AE45D88001558BF /* NotesFooter.swift in Sources */,
+				95E42A912AE51A20000448CD /* EditableList.swift in Sources */,
 				954555542AE45774001558BF /* NoteView.swift in Sources */,
 				9545555F2AE45E71001558BF /* NoteList.swift in Sources */,
 				954555562AE45D51001558BF /* NoteRow.swift in Sources */,
