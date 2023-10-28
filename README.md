@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-# notes-ios
 
-A demo app created specifically for educational purposes at the university, showcasing various features and capabilities.
-=======
 # Notes App
+A demo app created specifically for educational purposes at the university, showcasing various features and capabilities.
+
+
 The Notes app is a simple, user-friendly application built in SwiftUI for creating, editing, and managing your notes. With the ability to add photos to your notes and easily share them, the Notes app provides a convenient way to keep track of your thoughts, ideas, and important information.
 
 ![Notes View](docs/img1.png)
