@@ -16,11 +16,11 @@ protocol NotesRepository {
 
 class NotesRepositoryImpl: NotesRepository {
     var notes =  [
-        Note(id: UUID(), title:"title1", text:"this is an example text"),
-        Note(id: UUID(), title:"title2", text:"this is an example text"),
-        Note(id: UUID(), title:"title2", text:"thislk ajsldkfj laksdjf lkjasdk fjksdf lksjdflkjs dlkfjaksld flökj sdlkfjalskdfjlkasjdfkl ajlskdf jlaksjd flkajsldfjaslkdfj lasdfjlkas jdfkl jsdlkfj lksdj fklasjd fklajsd f is an e aölksj dflökas jdfklö asdlökf jaölksdfj lkajsd flkaj dsfölkaj sdflkja sdlkfj alksdfj alksdjf klasjdf lk ajskdf jalksjd flkasj dflkj aslkdfjxample text"),
-        Note(id: UUID(), title:"title2", text:"this is an example text"),
-        Note(id: UUID(), title:"title2", text:"this is an example text")
+        Note(id: UUID(), title:"First Note", text:"This is the content of the first note"),
+        Note(id: UUID(), title:"Second Note", text:"This is the content of the second note"),
+        Note(id: UUID(), title:"Short Note", text:"Very short content"),
+        Note(id: UUID(), title:"Long Note", text:"Very long content hello world hello world hello world hello world hello world hello world hello world"),
+        Note(id: UUID(), title:":)", text:"If you read this, be happy :)")
     ]
     
     func storeNote(note: Note) {
