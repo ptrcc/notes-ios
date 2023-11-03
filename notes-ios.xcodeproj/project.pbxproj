@@ -12,6 +12,8 @@
 		954555582AE45D88001558BF /* NotesFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954555572AE45D88001558BF /* NotesFooter.swift */; };
 		9545555D2AE45DF8001558BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555C2AE45DF8001558BF /* Note.swift */; };
 		9545555F2AE45E71001558BF /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555E2AE45E71001558BF /* NoteList.swift */; };
+		95B318892AF57F260020B630 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B318882AF57F260020B630 /* BaseAPI.swift */; };
+		95B3188B2AF5889C0020B630 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3188A2AF5889C0020B630 /* Quote.swift */; };
 		95BA48E62AE3D5B000552282 /* notes_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E52AE3D5B000552282 /* notes_iosApp.swift */; };
 		95BA48E82AE3D5B000552282 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E72AE3D5B000552282 /* NotesView.swift */; };
 		95BA48EA2AE3D5B100552282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BA48E92AE3D5B100552282 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		954555572AE45D88001558BF /* NotesFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFooter.swift; sourceTree = "<group>"; };
 		9545555C2AE45DF8001558BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		9545555E2AE45E71001558BF /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
+		95B318882AF57F260020B630 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		95B3188A2AF5889C0020B630 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		95BA48E22AE3D5B000552282 /* notes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "notes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BA48E52AE3D5B000552282 /* notes_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notes_iosApp.swift; sourceTree = "<group>"; };
 		95BA48E72AE3D5B000552282 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
@@ -56,8 +60,17 @@
 			isa = PBXGroup;
 			children = (
 				9545555C2AE45DF8001558BF /* Note.swift */,
+				95B3188A2AF5889C0020B630 /* Quote.swift */,
 			);
 			path = domain;
+			sourceTree = "<group>";
+		};
+		95B318872AF57F160020B630 /* web */ = {
+			isa = PBXGroup;
+			children = (
+				95B318882AF57F260020B630 /* BaseAPI.swift */,
+			);
+			path = web;
 			sourceTree = "<group>";
 		};
 		95BA48D92AE3D5B000552282 = {
@@ -79,6 +92,7 @@
 		95BA48E42AE3D5B000552282 /* notes-ios */ = {
 			isa = PBXGroup;
 			children = (
+				95B318872AF57F160020B630 /* web */,
 				95E42A9D2AE58238000448CD /* model */,
 				95E42A9A2AE581F4000448CD /* repository */,
 				95E42A972AE57FA0000448CD /* service */,
@@ -235,6 +249,8 @@
 				95E42A992AE57FB0000448CD /* NotesService.swift in Sources */,
 				954555562AE45D51001558BF /* NoteRow.swift in Sources */,
 				9545555D2AE45DF8001558BF /* Note.swift in Sources */,
+				95B3188B2AF5889C0020B630 /* Quote.swift in Sources */,
+				95B318892AF57F260020B630 /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

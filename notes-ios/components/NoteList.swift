@@ -26,7 +26,7 @@ struct NoteList: View {
     var body: some View {
         List($viewModel.notes) { $item in
             NavigationLink {
-                NoteView(note: $item)
+                NoteView(note: $item, viewModel: viewModel)
             } label: {
                 NoteRow(note: item)
                     .swipeActions(allowsFullSwipe: false) {

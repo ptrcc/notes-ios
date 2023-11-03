@@ -11,6 +11,7 @@ protocol NotesService {
     func getNotes() -> [Note]
     func addNote(note: Note)
     func deleteNote(note: Note)
+    func updateNote(note: Note, text: String)
 }
 
 class NotesServiceImpl: NotesService {
@@ -33,5 +34,8 @@ class NotesServiceImpl: NotesService {
         self.repository.deleteNote(note: note)
     }
     
+    func updateNote(note: Note, text: String) {
+        self.repository.updateNote(note: note, text: text)
+    }
 }
 

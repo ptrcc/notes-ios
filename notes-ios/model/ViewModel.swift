@@ -14,7 +14,7 @@ class ViewModel: ObservableObject {
 
     init(service: NotesService) {
         self.service = service
-        self.notes = service.getNotes()
+        refreshNotes()
     }
     
     func refreshNotes() {
@@ -28,6 +28,11 @@ class ViewModel: ObservableObject {
     
     func addNote(note: Note) {
         self.service.addNote(note: note)
+        refreshNotes()
+    }
+    
+    func updateNote(note: Note, text: String) {
+        self.service.updateNote(note: note, text: text)
         refreshNotes()
     }
 }

@@ -12,6 +12,7 @@ protocol NotesRepository {
     func fetchNotes() -> [Note]
     func storeNote(note: Note)
     func deleteNote(note: Note)
+    func updateNote(note: Note, text: String)
 }
 
 class NotesRepositoryImpl: NotesRepository {
@@ -28,12 +29,22 @@ class NotesRepositoryImpl: NotesRepository {
     }
     
     func deleteNote(note: Note) {
-        if let index = notes.firstIndex(where: {$0.id == note.id}) {
+        if let index = findNodeIdx(note: note) {
             notes.remove(at: index)
+        }
+    }
+    
+    func updateNote(note: Note, text: String) {
+        if let index = findNodeIdx(note: note) {
+            notes[index].text = text
         }
     }
     
     func fetchNotes() -> [Note] {
         return notes
+    }
+    
+    private func findNodeIdx(note: Note) -> Int? {
+        return notes.firstIndex(where: {$0.id == note.id})
     }
 }
