@@ -22,9 +22,8 @@ struct NoteRow: View {
 #Preview {
     NotesView(
         viewModel: ViewModel(
-            service: NotesServiceImpl(
-                repository: NotesRepositoryImpl()
-            )
+                repo: NotesRepositoryImpl()
+            
         )
     )
 }

@@ -26,13 +26,15 @@ struct NoteList: View {
     var body: some View {
         List($viewModel.notes) { $item in
             NavigationLink {
-                NoteView(note: $item, viewModel: viewModel)
+                NoteView(note: $item, viewModel: viewModel, uiImages: [])
             } label: {
                 NoteRow(note: item)
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
-                            viewModel.removeNote(note: item)
-                            print("Remove Note")
+                            Task {
+                                await viewModel.removeNote(note:item)
+                                print("Remove Note")
+                            }
                         } label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
@@ -47,9 +49,9 @@ struct NoteList: View {
 #Preview {
     NotesView(
         viewModel: ViewModel(
-            service: NotesServiceImpl(
-                repository: NotesRepositoryImpl()
+            
+                repo: NotesRepositoryImpl()
             )
-        )
+        
     )
 }

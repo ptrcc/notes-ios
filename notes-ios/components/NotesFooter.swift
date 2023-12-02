@@ -35,13 +35,3 @@ struct NotesFooter: View {
 }
 
 
-#Preview {
-    NotesView(
-        viewModel: ViewModel(
-            service: NotesServiceImpl(
-                repository: NotesRepositoryImpl()
-            )
-        )
-    )
-}
-

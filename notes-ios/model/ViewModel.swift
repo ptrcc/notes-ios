@@ -10,29 +10,36 @@ import Foundation
 
 class ViewModel: ObservableObject {
     @Published var notes: [Note] = []
-    private var service: NotesService
+    private var repo: NotesRepository
 
-    init(service: NotesService) {
-        self.service = service
-        refreshNotes()
+    init(repo: NotesRepository) {
+        self.repo = repo
     }
     
-    func refreshNotes() {
-        self.notes = service.getNotes()
+    func refreshNotes() async {
+        let notes = await repo.fetchNotes()
+        await MainActor.run {
+            self.notes = notes
+        }
     }
     
-    func removeNote(note: Note) {
-        self.service.deleteNote(note: note)
-        refreshNotes()
+    func persist() async {
+        await self.repo.persist(notes: notes)
     }
     
-    func addNote(note: Note) {
-        self.service.addNote(note: note)
-        refreshNotes()
+    func addNote(note: Note) async {
+        self.notes.insert(note, at: 0)
+        await self.persist()
     }
     
-    func updateNote(note: Note, text: String) {
-        self.service.updateNote(note: note, text: text)
-        refreshNotes()
+    func removeNote(note: Note) async {
+        if let index = findNodeIdx(note: note) {
+            notes.remove(at: index)
+        }
+        await self.persist()
+    }
+    
+    private func findNodeIdx(note: Note) -> Int? {
+        return notes.firstIndex(where: {$0.id == note.id})
     }
 }

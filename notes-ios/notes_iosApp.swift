@@ -10,14 +10,20 @@ import Combine
 
 @main
 struct notes_iosApp: App {
+    
+    var viewModel = ViewModel(
+            repo: NotesRepositoryImpl()
+        
+    )
+    
     var body: some Scene {
         WindowGroup {
-            NotesView(viewModel: ViewModel(
-                service: NotesServiceImpl(
-                    repository: NotesRepositoryImpl()
-                )
-                )
-            )
+            NotesView(viewModel: viewModel)
+            .task {
+                print("REFRESH IN APP")
+               await viewModel.refreshNotes()
+            }
+            
         }
     }
 }

@@ -6,47 +6,73 @@
 //
 import SwiftUI
 import UIKit
+import PhotosUI
 
 
 struct NoteView: View {
     @Binding var note: Note
     @ObservedObject var viewModel: ViewModel
     
+    @State private var selectedPhotos = [PhotosPickerItem]()
+    @State var uiImages: [UIImage]
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 TextField("Title", text: $note.title)
                     .font(.title).bold()
-                Divider()
-                HStack {
-                    Image("Apple")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(.blue)
-                    Image("Apple")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(.blue)
-                    Image("Apple")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(.blue)
+                if !uiImages.isEmpty {
+                    Divider()
+                    HStack {
+                        ScrollView(.horizontal) {
+                            LazyHStack{
+                                ForEach(uiImages, id: \.self) { photo in
+                                    Image(uiImage: photo)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 90, height: 90)
+                                }
+                            }
+                        }
+                    }.frame(height: 100)
                 }
+                
                 Divider()
                 TextEditor(text: $note.text)
                 Spacer()
             }
             .padding()
             .padding(.top, 0)
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                    }) {
-                        Image(systemName: "camera")
+            .onChange(of: selectedPhotos) { _, result in
+                uiImages.removeAll()
+                Task {
+                    for photo in selectedPhotos {
+                        do {
+                            if let data = try await photo.loadTransferable(type: Data.self) {
+                                if let uiImage = UIImage(data: data) {
+                                    self.uiImages.append(uiImage)
+                                }
+                            }
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                     }
                 }
+            }
+            .onDisappear {
+                Task {
+                    print(note.text)
+                    await self.viewModel.persist()
+                }
+            }
+            .toolbar {
                 ToolbarItem {
-                    ShareLink(item: URL(string: "https://developer.apple.com/xcode/swiftui/")!)
+                    ShareLink(item: note.text)
+                }
+                ToolbarItem {
+                    PhotosPicker(selection: $selectedPhotos, matching: .images) {
+                        Image(systemName: "camera")
+                    }
                 }
                 ToolbarItem {
                     Menu {
@@ -62,7 +88,8 @@ struct NoteView: View {
                                 switch response {
                                 case .success(let result):
                                     print("Successfully retrieved quote: \(result[0].quote)")
-                                    viewModel.updateNote(note: note, text: note.text + "\n\n" + result[0].description)
+                                    var q = result[0].description
+                                    await viewModel.persist()
                                 case .failure(let error):
                                     print("Error retrieving a quote: \(error)")
                                 }

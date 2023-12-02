@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-// import Combine
 
 struct NotesView: View {
     @ObservedObject var viewModel: ViewModel
@@ -28,9 +27,8 @@ struct NotesView: View {
 #Preview {
     NotesView(
         viewModel: ViewModel(
-            service: NotesServiceImpl(
-                repository: NotesRepositoryImpl()
+                repo: NotesRepositoryImpl()
             )
-        )
+        
     )
 }

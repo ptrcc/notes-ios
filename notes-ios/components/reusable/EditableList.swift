@@ -42,9 +42,8 @@ struct EditableList<Element: Identifiable, Content: View>: View {
 #Preview {
     NotesView(
         viewModel: ViewModel(
-            service: NotesServiceImpl(
-                repository: NotesRepositoryImpl()
+                repo: NotesRepositoryImpl()
             )
-        )
+        
     )
 }

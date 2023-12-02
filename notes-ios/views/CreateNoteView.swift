@@ -18,9 +18,10 @@ struct CreateNoteView: View {
 
     var createNoteMenu: some View {
         Button("Save") {
-            print("ADD NOTE")
-            viewModel.addNote(note: note)
-            self.mode.wrappedValue.dismiss()
+            Task {
+                await self.viewModel.addNote(note:note)
+                self.mode.wrappedValue.dismiss()
+            }
         }
     }
     
@@ -39,9 +40,6 @@ struct CreateNoteView: View {
             .navigationBarItems(
                 trailing: createNoteMenu
             )
-        }
-        .onSubmit {
-            viewModel.addNote(note: note)
         }
     }
 }

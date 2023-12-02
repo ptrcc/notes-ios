@@ -8,10 +8,8 @@
 import Combine
 
 protocol NotesService {
-    func getNotes() -> [Note]
-    func addNote(note: Note)
-    func deleteNote(note: Note)
-    func updateNote(note: Note, text: String)
+    func getNotes() async -> [Note]
+    func persist() async
 }
 
 class NotesServiceImpl: NotesService {
@@ -22,20 +20,12 @@ class NotesServiceImpl: NotesService {
         self.repository = repository
     }
 
-    func getNotes() -> [Note] {
-        return repository.fetchNotes()
+    func getNotes() async -> [Note] {
+        return await repository.fetchNotes()
     }
     
-    func addNote(note: Note) {
-        repository.storeNote(note: note)
-    }
-    
-    func deleteNote(note: Note) {
-        self.repository.deleteNote(note: note)
-    }
-    
-    func updateNote(note: Note, text: String) {
-        self.repository.updateNote(note: note, text: text)
+    func persist() async {
+        await repository.persist()
     }
 }
 
