@@ -14,23 +14,24 @@ struct NoteView: View {
     @ObservedObject var viewModel: ViewModel
     
     @State private var selectedPhotos = [PhotosPickerItem]()
-    @State var uiImages: [UIImage]
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 TextField("Title", text: $note.title)
                     .font(.title).bold()
-                if !uiImages.isEmpty {
+                if !note.images.isEmpty {
                     Divider()
                     HStack {
                         ScrollView(.horizontal) {
                             LazyHStack{
-                                ForEach(uiImages, id: \.self) { photo in
-                                    Image(uiImage: photo)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 90, height: 90)
+                                ForEach(note.images, id: \.self) { data in
+                                    if let uiImage = UIImage(data: data) {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 90, height: 90)
+                                    }
                                 }
                             }
                         }
@@ -44,13 +45,14 @@ struct NoteView: View {
             .padding()
             .padding(.top, 0)
             .onChange(of: selectedPhotos) { _, result in
-                uiImages.removeAll()
+                note.images.removeAll()
                 Task {
                     for photo in selectedPhotos {
                         do {
                             if let data = try await photo.loadTransferable(type: Data.self) {
                                 if let uiImage = UIImage(data: data) {
-                                    self.uiImages.append(uiImage)
+                                    
+                                    note.images.append(data)
                                 }
                             }
                         } catch {

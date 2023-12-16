@@ -17,7 +17,7 @@ struct CreateNoteView: View {
     }
 
     var createNoteMenu: some View {
-        Button("Save") {
+        Button("Create") {
             Task {
                 await self.viewModel.addNote(note:note)
                 self.mode.wrappedValue.dismiss()
