@@ -12,6 +12,7 @@
 		954555582AE45D88001558BF /* NotesFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954555572AE45D88001558BF /* NotesFooter.swift */; };
 		9545555D2AE45DF8001558BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555C2AE45DF8001558BF /* Note.swift */; };
 		9545555F2AE45E71001558BF /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555E2AE45E71001558BF /* NoteList.swift */; };
+		959FE1DA2B2D946900F18FD1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 959FE1D92B2D946900F18FD1 /* Localizable.xcstrings */; };
 		95B318892AF57F260020B630 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B318882AF57F260020B630 /* BaseAPI.swift */; };
 		95B3188B2AF5889C0020B630 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3188A2AF5889C0020B630 /* Quote.swift */; };
 		95BA48E62AE3D5B000552282 /* notes_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48E52AE3D5B000552282 /* notes_iosApp.swift */; };
@@ -30,6 +31,7 @@
 		954555572AE45D88001558BF /* NotesFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFooter.swift; sourceTree = "<group>"; };
 		9545555C2AE45DF8001558BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		9545555E2AE45E71001558BF /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
+		959FE1D92B2D946900F18FD1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		95B318882AF57F260020B630 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		95B3188A2AF5889C0020B630 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		95BA48E22AE3D5B000552282 /* notes-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "notes-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,14 @@
 			path = domain;
 			sourceTree = "<group>";
 		};
+		959FE1D82B2D943F00F18FD1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				959FE1D92B2D946900F18FD1 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		95B318872AF57F160020B630 /* web */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		95BA48E42AE3D5B000552282 /* notes-ios */ = {
 			isa = PBXGroup;
 			children = (
+				959FE1D82B2D943F00F18FD1 /* Resources */,
 				95B318872AF57F160020B630 /* web */,
 				95E42A9D2AE58238000448CD /* model */,
 				95E42A9A2AE581F4000448CD /* repository */,
@@ -198,6 +209,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 95BA48D92AE3D5B000552282;
 			productRefGroup = 95BA48E32AE3D5B000552282 /* Products */;
@@ -216,6 +228,7 @@
 			files = (
 				95BA48ED2AE3D5B100552282 /* Preview Assets.xcassets in Resources */,
 				95BA48EA2AE3D5B100552282 /* Assets.xcassets in Resources */,
+				959FE1DA2B2D946900F18FD1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

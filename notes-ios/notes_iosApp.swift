@@ -19,6 +19,7 @@ struct notes_iosApp: App {
     var body: some Scene {
         WindowGroup {
             NotesView(viewModel: viewModel)
+                .environment(\.locale, .init(identifier: "en"))
             .task {
                 print("REFRESH IN APP")
                await viewModel.refreshNotes()

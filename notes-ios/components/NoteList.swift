@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-var menu: some View {
-    Menu {
-        Text("Language")
-    } label: {
-        Label("Menu", systemImage: "ellipsis.circle")
-    }.padding()
-}
 
 struct NoteList: View {
 
@@ -42,7 +35,6 @@ struct NoteList: View {
             }
         }
         .navigationTitle("All Notes")
-        .navigationBarItems(trailing: menu)
     }
 }
 
