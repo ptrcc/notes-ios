@@ -41,5 +41,3 @@ Once you have the app up and running, here's how to use its features:
 ### Sharing a Note
 - Select the note you want to share from the list of existing notes.
 - Click the "Share" button
-
->>>>>>> b06d0f6 (updates)
