@@ -12,14 +12,15 @@ struct NoteList: View {
 
     @ObservedObject var viewModel: ViewModel
     
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         List($viewModel.notes) { $item in
             NavigationLink {
-                NoteView(note: $item, viewModel: viewModel)
+                NoteView(note: $item)
+                    .onDisappear {
+                        Task {
+                            await viewModel.persist()
+                        }
+                    }
             } label: {
                 NoteRow(note: item)
                     .swipeActions(allowsFullSwipe: false) {

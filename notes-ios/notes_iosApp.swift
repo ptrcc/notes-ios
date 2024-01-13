@@ -13,7 +13,6 @@ struct notes_iosApp: App {
     
     var viewModel = ViewModel(
             repo: NotesRepositoryImpl()
-        
     )
     
     var body: some Scene {

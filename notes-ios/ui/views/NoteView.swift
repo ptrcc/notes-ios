@@ -11,8 +11,7 @@ import PhotosUI
 
 struct NoteView: View {
     @Binding var note: Note
-    @ObservedObject var viewModel: ViewModel
-    
+
     @State private var selectedPhotos = [PhotosPickerItem]()
     @State private var selectedImage: UIImage?
     
@@ -62,12 +61,6 @@ struct NoteView: View {
                     }
                 }
             }
-            .onDisappear {
-                Task {
-                    print("PERSIST IN ON DISAPPEAR")
-                    await self.viewModel.persist()
-                }
-            }
             .toolbar {
                 ToolbarItem {
                     ShareLink(item: note.text)
@@ -93,7 +86,7 @@ struct NoteView: View {
                                 case .success(let result):
                                     print("Successfully retrieved quote: \(result[0].quote)")
                                     var q = result[0].description
-                                    await viewModel.persist()
+                                    note.text = note.text + "\n\n" + q
                                 case .failure(let error):
                                     print("Error retrieving a quote: \(error)")
                                 }
