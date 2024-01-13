@@ -47,18 +47,17 @@ struct NoteView: View {
             .onChange(of: selectedPhotos) { _, result in
                 note.images.removeAll()
                 Task {
-                    print("CHANGE PHOTOS")
-                    for photo in selectedPhotos {
-                        do {
-                            if let data = try await photo.loadTransferable(type: Data.self) {
-                                if let uiImage = UIImage(data: data) {
+                        print("CHANGE PHOTOS")
+                        for photo in selectedPhotos {
+                            do {
+                                if let data = try await photo.loadTransferable(type: Data.self) {
                                     note.images.append(data)
                                 }
+                            } catch {
+                                print(error.localizedDescription)
                             }
-                        } catch {
-                            print(error.localizedDescription)
                         }
-                    }
+                    
                 }
             }
             .toolbar {
@@ -85,8 +84,7 @@ struct NoteView: View {
                                 switch response {
                                 case .success(let result):
                                     print("Successfully retrieved quote: \(result[0].quote)")
-                                    var q = result[0].description
-                                    note.text = note.text + "\n\n" + q
+                                    note.text = note.text + "\n\n" + result[0].description
                                 case .failure(let error):
                                     print("Error retrieving a quote: \(error)")
                                 }
