@@ -70,19 +70,6 @@ struct NoteView: View {
                 }
             }
             .toolbar {
-                ToolbarItem
-                    Button("Take photo") {
-                        Task {
-                            // TODO add description to info.plist to make this work
-                            await self.setUpCaptureSession()
-                            self.showCamera.toggle()
-                        }
-                    }
-                    .fullScreenCover(isPresented: self.$showCamera) {
-                        accessCameraView(selectedImage: self.$selectedImage)
-                    }
-                }
-
                 ToolbarItem {
                     ShareLink(item: note.text)
                 }

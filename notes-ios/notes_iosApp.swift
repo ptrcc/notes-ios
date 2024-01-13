@@ -21,8 +21,7 @@ struct notes_iosApp: App {
             NotesView(viewModel: viewModel)
                 .environment(\.locale, .init(identifier: "en"))
             .task {
-                print("REFRESH IN APP")
-               await viewModel.refreshNotes()
+                await viewModel.refreshNotes()
             }
             
         }

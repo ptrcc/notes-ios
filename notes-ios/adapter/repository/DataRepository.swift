@@ -1,11 +1,6 @@
 import Foundation
 import Combine
 
-protocol NotesRepository {
-    func fetchNotes() async -> [Note]
-    func persist(notes: [Note]) async
-}
-
 class NotesRepositoryImpl: NotesRepository {
     init() {}
     
@@ -28,7 +23,7 @@ class NotesRepositoryImpl: NotesRepository {
         let fileURL = try Self.fileURL()
         let data = try JSONEncoder().encode(notes)
         try data.write(to: fileURL)
-        print("SAVE SUCCESS")
+        print("saved all notes successfully")
     }
 
     func persist(notes: [Note]) async {

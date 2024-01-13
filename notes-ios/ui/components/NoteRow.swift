@@ -23,7 +23,6 @@ struct NoteRow: View {
     NotesView(
         viewModel: ViewModel(
                 repo: NotesRepositoryImpl()
-            
         )
     )
 }
