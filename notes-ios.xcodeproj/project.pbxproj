@@ -70,7 +70,6 @@
 		955D7B5D2B52A8CC0016866F /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				95E42A9D2AE58238000448CD /* model */,
 				95E42A932AE51FC6000448CD /* views */,
 				95E42A962AE52036000448CD /* components */,
 			);
@@ -110,6 +109,14 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
+		955D7B642B52AA200016866F /* core */ = {
+			isa = PBXGroup;
+			children = (
+				95E42A9D2AE58238000448CD /* model */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		959FE1D82B2D943F00F18FD1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +144,7 @@
 		95BA48E42AE3D5B000552282 /* notes-ios */ = {
 			isa = PBXGroup;
 			children = (
+				955D7B642B52AA200016866F /* core */,
 				955D7B602B52A9380016866F /* port */,
 				959FE1D82B2D943F00F18FD1 /* Resources */,
 				955D7B5E2B52A8E50016866F /* adapter */,
