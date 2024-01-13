@@ -12,6 +12,7 @@ class ViewModel: ObservableObject {
     @Published var notes: [Note] = []
     private var repo: NotesRepository
 
+    
     init(repo: NotesRepository) {
         self.repo = repo
     }

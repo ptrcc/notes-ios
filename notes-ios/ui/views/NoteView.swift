@@ -14,9 +14,8 @@ struct NoteView: View {
     @ObservedObject var viewModel: ViewModel
     
     @State private var selectedPhotos = [PhotosPickerItem]()
-    @State private var showCamera = false
     @State private var selectedImage: UIImage?
-
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
@@ -49,11 +48,11 @@ struct NoteView: View {
             .onChange(of: selectedPhotos) { _, result in
                 note.images.removeAll()
                 Task {
+                    print("CHANGE PHOTOS")
                     for photo in selectedPhotos {
                         do {
                             if let data = try await photo.loadTransferable(type: Data.self) {
                                 if let uiImage = UIImage(data: data) {
-                                    
                                     note.images.append(data)
                                 }
                             }
@@ -65,7 +64,7 @@ struct NoteView: View {
             }
             .onDisappear {
                 Task {
-                    print(note.text)
+                    print("PERSIST IN ON DISAPPEAR")
                     await self.viewModel.persist()
                 }
             }
@@ -85,7 +84,7 @@ struct NoteView: View {
                             Task {
                                 let url = URL(string: "https://api.api-ninjas.com/v1/quotes")
                                 let api: BaseApi = BaseApi()
-                                let response: Result<[Quote], ApiError> = try await api.sendRequest(
+                                let response: Result<[Quote], ApiError> = await api.sendRequest(
                                     url: url,
                                     apiKey: "apikey", // TODO use environment
                                     responseModel: [Quote].self
@@ -109,66 +108,4 @@ struct NoteView: View {
             }
         }
     }
-    
-    var isAuthorized: Bool {
-        get async {
-            let status = AVCaptureDevice.authorizationStatus(for: .video)
-            
-            // Determine if the user previously authorized camera access.
-            var isAuthorized = status == .authorized
-            
-            // If the system hasn't determined the user's authorization status,
-            // explicitly prompt them for approval.
-            if status == .notDetermined {
-                isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
-            }
-            
-            return isAuthorized
-        }
-    }
-
-
-    func setUpCaptureSession() async {
-        guard await isAuthorized else { return }
-        // Set up the capture session.
-    }
 }
-
-
-struct accessCameraView: UIViewControllerRepresentable {
-    
-    @Binding var selectedImage: UIImage?
-    @Environment(\.presentationMode) var isPresented
-    
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = context.coordinator
-        return imagePicker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-        
-    }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(picker: self)
-    }
-}
-
-// Coordinator will help to preview the selected image in the View.
-class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    var picker: accessCameraView
-    
-    init(picker: accessCameraView) {
-        self.picker = picker
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.originalImage] as? UIImage else { return }
-        self.picker.selectedImage = selectedImage
-        self.picker.isPresented.wrappedValue.dismiss()
-    }
-}
-
