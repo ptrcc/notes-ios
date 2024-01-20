@@ -38,6 +38,9 @@ Once you have the app up and running, here's how to use its features:
 - Choose a photo from your device's gallery to attach to the note.
 - Save your note with the attached photo.
 
+### Adding a quote to a Note
+- You can add a random quote by clicking the 'add quote' button in the note menu.
+
 ### Sharing a Note
 - Select the note you want to share from the list of existing notes.
 - Click the "Share" button
