@@ -11,17 +11,15 @@ import Combine
 @main
 struct notes_iosApp: App {
     
-    var viewModel = ViewModel(
-            repo: NotesRepositoryImpl()
-    )
+   // var viewModel = ViewModel(
+   //         repo: NotesRepositoryImpl()
+   // )
     
     var body: some Scene {
         WindowGroup {
-            NotesView(viewModel: viewModel)
+            NotesView()
                 .environment(\.locale, .init(identifier: "en"))
-            .task {
-                await viewModel.refreshNotes()
-            }
+            
             
         }
     }

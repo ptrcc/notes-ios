@@ -1,6 +1,29 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ":(" : {
+
+    },
+    "%lld Image" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Bild"
+          }
+        }
+      }
+    },
+    "%lld Images" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Bilder"
+          }
+        }
+      }
+    },
     "Add Note" : {
       "localizations" : {
         "de" : {
@@ -57,6 +80,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menü"
+          }
+        }
+      }
+    },
+    "No Notes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Notizen"
           }
         }
       }

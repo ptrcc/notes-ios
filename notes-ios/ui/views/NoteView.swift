@@ -47,17 +47,15 @@ struct NoteView: View {
             .onChange(of: selectedPhotos) { _, result in
                 note.images.removeAll()
                 Task {
-                        print("CHANGE PHOTOS")
-                        for photo in selectedPhotos {
-                            do {
-                                if let data = try await photo.loadTransferable(type: Data.self) {
-                                    note.images.append(data)
-                                }
-                            } catch {
-                                print(error.localizedDescription)
+                    for photo in selectedPhotos {
+                        do {
+                            if let data = try await photo.loadTransferable(type: Data.self) {
+                                note.images.append(data)
                             }
+                        } catch {
+                            print(error.localizedDescription)
                         }
-                    
+                    }
                 }
             }
             .toolbar {
@@ -75,10 +73,10 @@ struct NoteView: View {
                         Button(action: {
                             Task {
                                 let url = URL(string: "https://api.api-ninjas.com/v1/quotes")
-                                let api: BaseApi = BaseApi()
+                                let api: BasicHttpClient = BasicHttpClient()
                                 let response: Result<[Quote], ApiError> = await api.sendRequest(
                                     url: url,
-                                    apiKey: "apikey", // TODO use environment
+                                    apiKey: "", // TODO use environment
                                     responseModel: [Quote].self
                                 )
                                 switch response {

@@ -14,6 +14,13 @@ struct NoteRow: View {
         VStack(alignment:.leading) {
             Text(note.title).bold()
             Text(note.text)
+            
+            if (note.images.count == 1) {
+                Text("\(note.images.count) Image").font(.caption2).foregroundStyle(.gray)
+            }
+            else if (note.images.count > 1) {
+                Text("\(note.images.count) Images").font(.caption2).foregroundStyle(.gray)
+            }
         }
     }
 }

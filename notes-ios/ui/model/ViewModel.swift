@@ -8,16 +8,16 @@
 import Combine
 import Foundation
 
+@MainActor
 class ViewModel: ObservableObject {
     @Published var notes: [Note] = []
     private var repo: NotesRepository
 
-    
     init(repo: NotesRepository) {
         self.repo = repo
     }
     
-    func refreshNotes() async {
+    func loadNotes() async {
         let notes = await repo.fetchNotes()
         await MainActor.run {
             self.notes = notes

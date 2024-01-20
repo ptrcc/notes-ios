@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct NotesView: View {
-    @ObservedObject var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: ViewModel = ViewModel(repo: NotesRepositoryImpl())
     
     var body: some View {
         NavigationStack {
             NoteList(viewModel: viewModel)
             NotesFooter(viewModel: viewModel)
+        }.task {
+           await viewModel.loadNotes()
         }
     }
 }

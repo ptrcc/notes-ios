@@ -13,6 +13,7 @@
 		9545555D2AE45DF8001558BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555C2AE45DF8001558BF /* Note.swift */; };
 		9545555F2AE45E71001558BF /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545555E2AE45E71001558BF /* NoteList.swift */; };
 		955D7B632B52A9600016866F /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D7B622B52A9600016866F /* NotesRepository.swift */; };
+		955D7B672B5AB5FF0016866F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D7B662B5AB5FF0016866F /* HttpClient.swift */; };
 		959FE1DA2B2D946900F18FD1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 959FE1D92B2D946900F18FD1 /* Localizable.xcstrings */; };
 		95B318892AF57F260020B630 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B318882AF57F260020B630 /* BaseAPI.swift */; };
 		95B3188B2AF5889C0020B630 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3188A2AF5889C0020B630 /* Quote.swift */; };
@@ -33,6 +34,7 @@
 		9545555C2AE45DF8001558BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		9545555E2AE45E71001558BF /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		955D7B622B52A9600016866F /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
+		955D7B662B5AB5FF0016866F /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		959FE1D92B2D946900F18FD1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		95B318882AF57F260020B630 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		95B3188A2AF5889C0020B630 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		955D7B5D2B52A8CC0016866F /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				95E42A9D2AE58238000448CD /* model */,
 				95E42A932AE51FC6000448CD /* views */,
 				95E42A962AE52036000448CD /* components */,
 			);
@@ -96,6 +99,7 @@
 		955D7B602B52A9380016866F /* port */ = {
 			isa = PBXGroup;
 			children = (
+				955D7B652B5AB5EC0016866F /* http */,
 				955D7B612B52A94B0016866F /* repository */,
 			);
 			path = port;
@@ -112,9 +116,18 @@
 		955D7B642B52AA200016866F /* core */ = {
 			isa = PBXGroup;
 			children = (
-				95E42A9D2AE58238000448CD /* model */,
+				954555592AE45DC8001558BF /* domain */,
+				955D7B602B52A9380016866F /* port */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		955D7B652B5AB5EC0016866F /* http */ = {
+			isa = PBXGroup;
+			children = (
+				955D7B662B5AB5FF0016866F /* HttpClient.swift */,
+			);
+			path = http;
 			sourceTree = "<group>";
 		};
 		959FE1D82B2D943F00F18FD1 /* Resources */ = {
@@ -145,10 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				955D7B642B52AA200016866F /* core */,
-				955D7B602B52A9380016866F /* port */,
 				959FE1D82B2D943F00F18FD1 /* Resources */,
 				955D7B5E2B52A8E50016866F /* adapter */,
-				954555592AE45DC8001558BF /* domain */,
 				95BA48E52AE3D5B000552282 /* notes_iosApp.swift */,
 				955D7B5D2B52A8CC0016866F /* ui */,
 				95BA48E92AE3D5B100552282 /* Assets.xcassets */,
@@ -296,6 +307,7 @@
 				9545555D2AE45DF8001558BF /* Note.swift in Sources */,
 				95B3188B2AF5889C0020B630 /* Quote.swift in Sources */,
 				95B318892AF57F260020B630 /* BaseAPI.swift in Sources */,
+				955D7B672B5AB5FF0016866F /* HttpClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,16 +7,7 @@
 
 import Foundation
 
-enum ApiError: Error {
-    case wrongRequest
-    case parsingError
-    case unauthorized
-    case notResults
-    case serverError(code: Int)
-    case unknown
-}
-
-class BaseApi {
+class BasicHttpClient: HttpClient {
     func sendRequest<T: Decodable>(url: URL?, apiKey: String, responseModel: T.Type) async -> Result<T, ApiError> {
         guard let url = url else {
             return .failure(.wrongRequest)

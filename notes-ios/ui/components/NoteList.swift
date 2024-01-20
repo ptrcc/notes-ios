@@ -13,6 +13,15 @@ struct NoteList: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
+        
+        if (viewModel.notes.count == 0) {
+            HStack{
+                Spacer()
+                Spacer()
+                Text(":(")
+                }
+        }
+        
         List($viewModel.notes) { $item in
             NavigationLink {
                 NoteView(note: $item)
@@ -35,7 +44,7 @@ struct NoteList: View {
                     }
             }
         }
-        .navigationTitle("All Notes")
+        .navigationTitle(viewModel.notes.count > 0 ? "All Notes": "No Notes")
     }
 }
 
